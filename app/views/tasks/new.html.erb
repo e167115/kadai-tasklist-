@@ -1,0 +1,12 @@
+<h1>新しいタスクを登録する</h1>
+
+<%= form_with(model: @task, local: true) do |f| %>
+    <%= f.label :content, "NEWタスク" %>
+    <%= f.text_field :content %>
+
+    <%= f.submit "登録" %>
+
+<% end %> 
+
+<%= link_to "タスク一覧に戻る", tasks_path %>
+    
