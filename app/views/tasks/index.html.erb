@@ -13,7 +13,7 @@
             <tbody>
                 <% @tasks.each do |task| %>
                     <tr>
-                        <td><%= link_to task.user.name, user_path(task.user) %></td>
+                        <td><%= task.user.name %></td>
                         <td><%= link_to task.id, task %></td>
                         <td><%= task.status %></td>
                         <td><%= task.content %></td>

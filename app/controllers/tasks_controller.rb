@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
     before_action :set_task, only: [:edit, :show, :update, :destroy]
     before_action :require_user_logged_in
-    before_action :correct_user, only: [:destroy]
+    before_action :correct_user, only: [:destroy, :edit, :show, :update]
     def index
         if logged_in?
             @task = current_user.tasks.build
@@ -13,7 +13,7 @@ class TasksController < ApplicationController
         @task = current_user.tasks.build(task_params)
         if @task.save 
             flash[:success] = "追加完了"
-            redirect_to @task
+            redirect_to tasks_path
         else
             flash.now[:danger] = "追加できませんでした"
             render :new
@@ -44,7 +44,7 @@ class TasksController < ApplicationController
         @task.destroy
         
         flash[:success] = "削除完了！！"
-        redirect_to tasks_url
+        redirect_to tasks_path
     end
 
 
